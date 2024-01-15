@@ -30,20 +30,22 @@ while game_is_on:
             or snake.segments[0].ycor() > 280
             or snake.segments[0].ycor() < -280
     ):
-        game_is_on = False
-        scorebord.gameover()
+        scorebord.reseat()
+        snake.reset()
 
     if snake.segments[0].distance(food) < 15:
         food.refresh()
         snake.extend()
         scorebord.increse_score()
 
+
     for segment in snake.segments:
         if segment == snake.segments[0]:
             pass
         elif snake.segments[0].distance(segment) < 10:
-            game_is_on = False
-            scorebord.gameover()
+
+            scorebord.reseat()
+            snake.reset()
 
 
 screen.exitonclick()
